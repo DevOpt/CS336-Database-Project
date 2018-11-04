@@ -1,0 +1,1 @@
+database_uri = "mysql+pymysql://admin:database2018@databasesproject.cuhszrss1pxl.us-east-2.rds.amazonaws.com/BBDext"

@@ -1,0 +1,6 @@
+## Settings
+
+"python.pythonPath": "/Users/abdurahmansherif/Developer/Database/Database%20Project/Server/venv/bin/python",
+"python.linting.enabled": true,
+"python.linting.pylintPath": "/Users/abdurahmansherif/Developer/Database/Database%20Project/Server/venv/bin/pylint",
+"python.linting.pylintEnabled": false
