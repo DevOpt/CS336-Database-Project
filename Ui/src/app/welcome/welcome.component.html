@@ -1,0 +1,27 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-2">Welcome to Bar Beer Drinker</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+
+<div class="container">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">City</th>
+      <th scope="col">License</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let bar of bars; index as i">
+      <th scope="row">{{ i }}</th>
+      <td>{{ bar.name }}</td>
+      <td>{{ bar.city }}</td>
+      <td>{{ bar.license }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
