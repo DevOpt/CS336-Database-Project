@@ -6,22 +6,25 @@
 </div>
 
 <div class="container">
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">City</th>
-      <th scope="col">License</th>
+
+  <p-table [value] = "bars"> 
+    <ng-template pTemplate="header">
+      <tr>
+      <th>Name</th>
+      <th>City</th>
+      <th>License</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let bar of bars; index as i">
-      <th scope="row">{{ i }}</th>
-      <td>{{ bar.name }}</td>
-      <td>{{ bar.city }}</td>
-      <td>{{ bar.license }}</td>
-    </tr>
-  </tbody>
-</table>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-bar>
+      <tr>
+        <td>
+          <a routerLink="/bars/{{ bar.name }}">{{ bar.name }}</a>
+        </td>
+        <td>{{ bar.city }}</td>
+        <td>{{ bar.license }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
 </div>

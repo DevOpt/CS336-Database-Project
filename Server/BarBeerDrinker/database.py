@@ -33,4 +33,30 @@ def filter_beers(max_price):
         for r in results:
             r['price'] = float(r['price'])
         return results
-        
+
+def get_bar_menu(bar_name):
+    return
+
+def get_bars_selling(beer):
+    return
+
+def get_bar_frequent_counts():
+    return
+
+def get_bar_cities():
+    return
+
+def get_beers():
+    return
+
+def get_beer_manufacturers(beer):
+    return
+
+def get_drinkers():
+    return
+
+def get_likes(drinker_name):
+    return
+
+def get_drinker_info(drinker_name):
+    return
