@@ -60,3 +60,19 @@ def get_likes(drinker_name):
 
 def get_drinker_info(drinker_name):
     return
+
+
+# Given a beer, show top 10 bars where this beer sells the most, 
+# show also drinkers who are the biggest consumers of this beer 
+# as well as time distribution of when this beer sells the most.  
+def get_most_selling(beer):
+    return
+
+# Include the bar they work at
+def get_bartenders():
+    return
+
+# Given a bartender for a given bar, show all shifts of this bartender 
+# in the past and how many beers of each brand did he/she sell.
+def get_bartender(name):
+    return

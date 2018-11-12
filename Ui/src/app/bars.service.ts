@@ -5,6 +5,9 @@ export interface Bars{
   name: string;
   license: string;
   city: string;
+  phone: string;
+  open_time: string;
+  close_time: string;
 }
 
 @Injectable({
