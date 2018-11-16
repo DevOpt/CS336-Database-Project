@@ -2,23 +2,34 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TableModule, Table } from 'primeng/table';
-
+import { DropdownModule } from 'primeng/dropdown'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { FormsModule } from '@angular/forms'
+ 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { BarDetailsComponent } from './bar-details/bar-details.component';
+import { BeerDetailsComponent } from './beer-details/beer-details.component';
+import { BeersComponent } from './beers/beers.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     BarDetailsComponent,
+    BeerDetailsComponent,
+    BeersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    TableModule
+    DropdownModule,
+    TableModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
