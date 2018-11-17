@@ -1,0 +1,48 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><strong>{{ manf }}</strong></h1>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="font-weight-light text-center">Top Sales in Cities</h2>
+  <p-table [value] = "manfSales"> 
+    <ng-template pTemplate="header">
+      <tr>
+      <th>City</th>
+      <th>Total Sales</th>
+    </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-sales>
+      <tr>
+        <td>{{ sales.city }}</td>
+        <td>{{ sales.city_sales }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<br>
+
+<div class="container">
+  <h2 class="font-weight-light text-center">Cities of Drinkers who like Beers Made by {{ manf }}</h2>
+  <p-table [value] = "citiesLikedManf"> 
+    <ng-template pTemplate="header">
+      <tr>
+      <th>City</th>
+      <th>Liked</th>
+    </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-liked>
+      <tr>
+        <td>{{ liked.city }}</td>
+        <td>{{ liked.drinkers_like }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<br>
+

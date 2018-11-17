@@ -64,6 +64,13 @@ def get_beers():
     except Exception as e:
         return make_response(str(e), 500)
 
+@app.route("/api/beer-name", methods=["GET"])
+def get_beers_name():
+    try:
+        return jsonify(database.get_beers_name())
+    except Exception as e:
+        return make_response(str(e), 500)
+
 @app.route("/api/beer-manufacturer", methods=["GET"])
 def get_beer_manufacturers():
     try:
@@ -151,3 +158,91 @@ def get_top_beers(name):
         return make_response(str(e), 400)
     except Exception as e:
         return make_response(str(e), 500)
+
+@app.route("/api/transactions/<name>", methods=["GET"])
+def num_of_transactions(name):
+    try:
+        if name is None:
+            raise ValueError('Bar is not specified')
+        bar = database.find_bar(name)
+        if bar is None:
+            return make_response("No bar found with the given name,",404)
+        return jsonify(database.num_of_transactions(name))
+    except ValueError as e:
+        return make_response(str(e), 400)
+    except Exception as e:
+        return make_response(str(e), 500)
+
+@app.route("/api/inventory/fraction/<name>/<day>", methods=["GET"])
+def get_bar_inventory(name, day):
+    try:
+        return jsonify(database.get_bar_inventory(name, day))
+    except Exception as e:
+        return make_response(str(e), 500)
+
+@app.route("/api/top-bars/<beer>/<day>", methods=["GET"])
+def get_top_bars(beer, day):
+    try:
+        if beer is None:
+            raise ValueError("Beer or day is not specified")
+        return jsonify(database.get_top_bars(beer, day))
+    except ValueError as e:
+        return make_response(str(e), 400)
+    except Exception as e:
+        return make_response(str(e), 500)
+
+@app.route("/api/top-bars/<beer>", methods=["GET"])
+def get_top_bars_for(beer):
+    try:
+        if beer is None:
+            raise ValueError("Beer is not specified")
+        return jsonify(database.get_top_bars(beer, None))
+    except ValueError as e:
+        return make_response(str(e), 400)
+    except Exception as e:
+        return make_response(str(e), 500)
+
+@app.route("/api/top-drinkers/<beer>", methods=["GET"])
+def get_top_drinkers(beer):
+    try:
+        if beer is None:
+            raise ValueError("Beer is not specified")
+        return jsonify(database.get_top_drinkers(beer))
+    except ValueError as e:
+        return make_response(str(e), 400)
+    except Exception as e:
+        return make_response(str(e), 500)
+
+@app.route("/api/popular-times/<bar>", methods=["GET"])
+def popular_times(bar):
+    try:
+        if bar is None:
+            raise ValueError("Bar is not specified")
+        return jsonify(database.popular_times(bar))
+    except ValueError as e:
+        return make_response(str(e), 400)
+    except Exception as e:
+        return make_response(str(e), 500)
+
+@app.route("/api/top-manf-sales/<manf>", methods=["GET"])
+def get_top_manf_sales(manf):
+    try:
+        if manf is None:
+            raise ValueError("Maunfacturer is not specified")
+        return jsonify(database.get_top_manf_sales(manf))
+    except ValueError as e:
+        return make_response(str(e), 400)
+    except Exception as e:
+        return make_response(str(e), 500)
+
+@app.route("/api/cities-like-manf/<manf>", methods=["GET"])
+def get_cities_like_manf(manf):
+    try:
+        if manf is None:
+            raise ValueError("Maunfacturer is not specified")
+        return jsonify(database.get_cities_like_manf(manf))
+    except ValueError as e:
+        return make_response(str(e), 400)
+    except Exception as e:
+        return make_response(str(e), 500)
+

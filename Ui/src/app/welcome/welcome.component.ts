@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BarsService, Bars } from '../bars.service';
+import { BarsService, Bars, TopBars } from '../bars.service';
 
 @Component({
   selector: 'app-welcome',
@@ -9,11 +9,20 @@ import { BarsService, Bars } from '../bars.service';
 export class WelcomeComponent implements OnInit {
 
   bars: Bars[];
+  topBars: TopBars;
+  beer: string;
+  day: string;
 
   constructor(
     public BarService: BarsService
   ) { 
     this.getBars();
+
+    this.BarService.getTopBars('Landshark', 'Monday').subscribe(
+      data => {
+        this.topBars = data;
+      }
+    )
   }
 
   ngOnInit() {

@@ -12,6 +12,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { BarDetailsComponent } from './bar-details/bar-details.component';
 import { BeerDetailsComponent } from './beer-details/beer-details.component';
 import { BeersComponent } from './beers/beers.component';
+import { ManufacturersComponent } from './manufacturers/manufacturers.component';
+import { ManufacturerDetailsComponent } from './manufacturer-details/manufacturer-details.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { BeersComponent } from './beers/beers.component';
     WelcomeComponent,
     BarDetailsComponent,
     BeerDetailsComponent,
-    BeersComponent
+    BeersComponent,
+    ManufacturersComponent,
+    ManufacturerDetailsComponent
   ],
   imports: [
     BrowserModule,

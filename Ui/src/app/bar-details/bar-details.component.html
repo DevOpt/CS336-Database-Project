@@ -34,16 +34,46 @@
 <br>
 
 <div class="container">
-  <div class="container">
     <div id="spenderbargraph">
   </div>
   <br>
 
   <div class="container">
-  <div class="container">
-    <div id="beerbargraph">
+    <div id="popularTimesbargraph">
   </div>
   <br>
+
+  <div class="container">
+    <p-dropdown class="float-right text-left" *ngIf="filterDate" [options]="filterDate" (onChange)="setDay($event.value)"></p-dropdown>
+    <div id="beerbargraph">
+  </div>
+  </div>
+  <br>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link active" href="#">Day</a>
+  </li>
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link" href="#">Hour</a>
+  </li>
+</ul>
+
+<br>
+<div class="container">
+    <div id="transbargraph">
+  </div>
+  </div>
+  <br>
+  <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
+  <p-dropdown [options]="cities2" [(ngModel)]="selectedCity2" optionLabel="name"></p-dropdown>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h4 class="display-5">Inventory Fraction</h4>
+    {{ inventoryFraction }}
+  </div>
+</div>
+
 
 </div>
 

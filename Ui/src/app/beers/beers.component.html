@@ -4,7 +4,10 @@
     <p class="lead">This page can be used to see all the beers in our system or just by your preferred manufacturer.</p>
     <p-dropdown *ngIf="manufacturerOptions" [ngClass]="{ 'no-option-selected': selectedManufacturer === undefined || selectedManufacturer === null}"
       placeholder="Filter by manufacturer" [options]="manufacturerOptions" [(ngModel)]="selectedManufacturer" showClear="true"
-      (onChange)="filterBeers($event.value)"></p-dropdown>
+      (onChange)="filterBeers($event.value)"></p-dropdown> 
+    <p-dropdown *ngIf="beerOptions" [ngClass]="{ 'no-option-selected': selectedBeer === undefined || selectedBeer === null}"
+      placeholder="Select a beer" [options]="beerOptions" [(ngModel)]="selectedBeer" showClear="true"
+      (onChange)="setBeers($event.value)"></p-dropdown>  
   </div>
 </div>
 
@@ -25,7 +28,53 @@
         <td>
           <a routerLink="/beers/{{ beer.name }}">{{ beer.name }}</a>
         </td>
-        <td>{{ beer.manf }}</td>
+        <td>
+          <a routerLink="/manufacturers/{{ beer.manf }}">{{ beer.manf }}</a>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<br>
+
+<div class="container">
+  <h2 class="font-weight-light text-center">Beer Sold Most in</h2>
+  <p-table [value] = "topBarsFor"> 
+    <ng-template pTemplate="header">
+      <tr>
+      <th>Bar</th>
+      <th>Amount</th>
+    </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-beer>
+      <tr>
+        <td>
+          <a routerLink="/bars/{{ beer.bar }}">{{ beer.bar }}</a>
+        </td>
+        <td>{{ beer.total_sales }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<br>
+
+<div class="container">
+  <h2 class="font-weight-light text-center">Top Consumers</h2>
+  <p-table [value] = "topDrinkers"> 
+    <ng-template pTemplate="header">
+      <tr>
+      <th>Drinker</th>
+      <th>Amount</th>
+    </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-drinker>
+      <tr>
+        <td>
+          <a routerLink="/drinkers/{{ drinker.drinker }}">{{ drinker.drinker }}</a>
+        </td>
+        <td>{{ drinker.total }}</td>
       </tr>
     </ng-template>
   </p-table>

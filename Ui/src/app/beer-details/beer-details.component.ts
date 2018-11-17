@@ -30,7 +30,7 @@ export class BeerDetailsComponent implements OnInit {
         data => {
           this.beerLocations =data;
         }
-      )
+      );
 
       this.beerService.getBeerManufacturers(this.beerName).subscribe(
         data => {

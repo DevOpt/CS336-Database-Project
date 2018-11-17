@@ -26,6 +26,22 @@ export interface TopBeers{
   total: number;
 }
 
+export interface NumOfTransactions{
+  day: string;
+  num_of_trans: number;
+}
+
+export interface TopBars{
+  bar: string;
+  total_sales: number;
+}
+
+export interface PopularTimes{
+  time: string;
+  trans_per_hour: number;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -47,11 +63,27 @@ export class BarsService {
     return this.http.get<BarMenuItem>('/api/menu/' + bar);
   }
 
+  getTopBars(beer: string, day:string){
+    return this.http.get<TopBars>('/api/top-bars/' + beer +'/'+day);
+  }
+
+  getPopularTimes(bar: string){
+    return this.http.get<PopularTimes>('/api/popular-times/' + bar);
+  }
+
   getTopSpenders(bar: string){
     return this.http.get<TopSpenders>('/api/top-spenders/' + bar);
   }
 
   getTopBeers(bar: string){
-    return this.http.get<TopBeers>('api/top-beers/' + bar)
+    return this.http.get<TopBeers>('api/top-beers/' + bar);
+  }
+
+  getNumTransactions(bar: string){
+    return this.http.get<NumOfTransactions>('api/transactions/' + bar);
+  }
+
+  getInventoryFraction(bar: string, day: string){
+    return this.http.get<string>('api/inventory/fraction/' + bar +'/'+day);
   }
 }
