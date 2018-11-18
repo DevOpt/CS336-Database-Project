@@ -93,7 +93,9 @@ def get_beer_manufacturers(beer):
     return result['manf']
 
 def get_drinkers():
-    return
+    with engine.connect() as con:
+        rs = con.execute("SELECT DISTINCT drinker From BBDext.Bills;")
+        return [row['drinker'] for row in rs]
 
 def get_likes(drinker_name):
     return
@@ -491,5 +493,36 @@ def get_cities_like_manf(manf):
         result = [dict(row) for row in rs]
         for i, _ in enumerate(result):
             result[i]['drinkers_like'] = float(result[i]['drinkers_like'])
+        return result
+
+def get_drinker_transactions(drinker):
+    with engine.connect() as con:
+        query = sql.text(
+            "SELECT bar, ID, items,date \
+                FROM BBDext.Bills \
+                WHERE drinker = " + "\"" + drinker +"\"" + " \
+                GROUP BY bar \
+                ORDER BY STR_TO_DATE( `time`, '%l:%i %p');"
+        )
+
+        rs = con.execute(query, drinker=drinker)
+        return [dict(row) for row in rs]
+
+# Drinkers most ordered beers
+def get_most_ordered_beer(drinker):
+    with engine.connect() as con:
+        query = sql.text(
+            "SELECT B.name, COUNT(B.name) AS beer_ordered \
+                FROM BBDext.Bills, BBDext.Beer B \
+                WHERE drinker="+ "\"" + drinker +"\"" + " && LOCATE(B.name, Bills.items)>0 \
+                GROUP BY B.name \
+                ORDER BY beer_ordered desc \
+                LIMIT 10"
+        )
+
+        rs = con.execute(query, drinker=drinker)
+        result = [dict(row) for row in rs]
+        for i, _ in enumerate(result):
+            result[i]['beer_ordered'] = float(result[i]['beer_ordered'])
         return result
 

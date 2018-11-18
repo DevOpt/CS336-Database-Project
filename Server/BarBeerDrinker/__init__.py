@@ -113,6 +113,28 @@ def get_drinker(name):
     except Exception as e:
         return make_response(str(e), 500)
 
+@app.route("/api/drinker/most-ordered/<name>", methods=["GET"])
+def get_most_ordered_beer(name):
+    try:
+        if name is None:
+            raise ValueError("Drinker is not specified")
+        return jsonify(database.get_most_ordered_beer(name))
+    except ValueError as e:
+        return make_response(str(e), 400)
+    except Exception as e:
+        return make_response(str(e), 500)
+
+@app.route("/api/drinker-transactions/<name>", methods=["GET"])
+def get_drinker_transactions(name):
+    try:
+        if name is None:
+            raise ValueError("Drinker is not specified")
+        return jsonify(database.get_drinker_transactions(name))
+    except ValueError as e:
+        return make_response(str(e), 400)
+    except Exception as e:
+        return make_response(str(e), 500)
+
 @app.route("/api/bars-selling/<beer>", methods=["GET"])
 def find_bars_selling(beer):
     try:

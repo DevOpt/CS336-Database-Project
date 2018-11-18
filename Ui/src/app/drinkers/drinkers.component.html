@@ -1,0 +1,27 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Drinkers</h1>
+    <p class="lead">This page can be used to see all the drinkers in our system.</p>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="font-weight-light text-center">Drinkers</h2>
+  <p-table [value] = "drinkers" [paginator]="true" [rows]="10"> 
+    <ng-template pTemplate="header">
+      <tr>
+      <th>Name</th>
+    </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-drinker>
+      <tr>
+        <td>
+          <a routerLink="/drinkers/{{ drinker }}">{{ drinker }}</a>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<br>
